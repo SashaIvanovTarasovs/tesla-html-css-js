@@ -1,0 +1,183 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    color:#171a20;
+    font-family: 'M PLUS 1', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.desktop{
+    display: none;
+}
+
+@media (min-width: 1200px){
+    .desktop{
+        display: initial;
+    }
+}
+
+header{
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    padding: 5px 20px;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+}
+
+a.logo{
+    height: 12px;
+    width: 100px;
+    color: inherit;
+}
+
+header a{
+    color: inherit;
+}
+
+header nav a{
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+header nav.center{
+    text-align: center;
+    padding-left: 100px;
+}
+
+header nav.right{
+    text-align: right;
+}
+
+section{
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+}
+
+section .content{
+    opacity: 0; /* initially hide the content */
+    z-index: 1; /* bring the content to the front */
+    position: fixed; /* always stays in the same place even if the page is scrolled */
+    width: 100%; /* make the content full width */
+    height: 100vh; /* make the content full height */
+    padding-top: 15vh;
+    padding-bottom: 15vh;
+    display: grid; /* display the content in a grid */
+    grid-template-rows: min-content auto min-content; /* create a grid with 3 rows */
+    text-align: center; /* center the content */
+    top: 0; /* position the content to the top */
+    transition: opacity .3s ease; /* add a transition to the content */
+}
+
+section.active .content{
+    opacity: 1; /* make the content visible */
+}
+
+section h1{
+    font-size:3rem; /* “root em”, a unit of measurement that represents the font size of the root element. 1rem equals the font size of the html element ,16px per default in general */
+}
+
+section a{
+    color: inherit; /* the style will be inherited from the element's parent */
+}
+
+section .buttons{
+    display: grid; /* display the content in a grid */
+    row-gap: 20px; /* size of the distance between two elements */
+    margin: 0 40px; /* add some margin to the buttons */
+}
+
+@media (min-width: 1200px){
+    section .buttons {
+        display: flex;
+    }
+}
+
+section .buttons a{
+    display: block;
+    background-color: #eee;
+    color: inherit;
+    padding: 12px 50px;
+    border-radius: 25px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+section .buttons a:first-child{
+    background-color:#444;
+    color:#fff;
+}
+
+@media (min-width:640px) {
+    section .buttons{
+        max-width: 640px;
+        margin: 0 auto;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 20px;
+    }
+}
+
+aside{
+    position:fixed;
+    transition: right .4s ease;
+    right:-320px;
+    width: 320px;
+    background-color: #fff;
+    padding: 80px 40px;
+    z-index: 4;
+    height: 100vh;
+}
+
+aside.active{
+    right:0;
+}
+
+aside a{
+    display:block;
+    color:inherit;
+    text-decoration: none;
+    padding: 12px 0;
+    font-size: 14px;
+    font-weight:500;
+}
+
+aside button.close{
+    font-size: 24px;
+    border: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+.backdrop{
+    display: none;
+    position: fixed;
+    z-index:3;
+    inset: 0;
+    background-color: rgba(0,0,0,0);
+    transition: background-color .4s ease;
+    backdrop-filter: blur(5px);
+}
+
+.backdrop.active{
+    display:block;
+    background-color: rgba(0,0,0,.35);
+}
+
+
